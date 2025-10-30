@@ -18,7 +18,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-linear-to-br from-blue-50 via-white to-blue-100">
       <Navbar />
       
       {/* Header Section */}
@@ -28,11 +28,11 @@ export default function ProfilePage() {
             {/* Profile Card */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
               {/* Profile Header */}
-              <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-8 sm:px-8">
+              <div className="bg-linear-to-r from-blue-600 to-blue-700 px-6 py-8 sm:px-8">
                 <div className="flex flex-col sm:flex-row items-center gap-6">
                   <div className="relative">
                     <img
-                      src={user.picture || "/default-avatar.png"}
+                      src={user.picture}
                       alt="Profile"
                       className="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-4 border-white shadow-lg"
                     />
