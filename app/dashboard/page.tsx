@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 interface CityWeather {
   id: number;
@@ -14,6 +15,7 @@ interface CityWeather {
 export default function Dashboard() {
   const [weatherData, setWeatherData] = useState<CityWeather[]>([]);
   const [loading, setLoading] = useState(true);
+  const { user, isLoading } = useUser();
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -48,40 +50,57 @@ export default function Dashboard() {
       <Navbar />
 
       <div className="container mx-auto mt-10 px-4 pb-12">
-        <h1 className="text-3xl md:text-4xl font-bold text-blue-700 text-center mb-10 tracking-tight">
-          🌦️ Live Weather Dashboard
-        </h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {weatherData.slice(0, 8).map((city) => (
-            <div
-              key={city.id}
-              className="bg-white/80 backdrop-blur-md shadow-lg rounded-2xl p-5 flex flex-col items-center justify-center text-center h-56 border border-gray-100 hover:shadow-2xl hover:scale-[1.03] transition-all duration-200"
-            >
-              <h2 className="text-lg md:text-xl font-semibold text-gray-900">
-                {city.name}
-              </h2>
+        {user ? (
+          <>
+            <h1 className="text-3xl md:text-4xl font-bold text-blue-700 text-center mb-10 tracking-tight">
+              🌦️ Live Weather Dashboard
+            </h1>
 
-              <img
-                src={`https://openweathermap.org/img/wn/${city.weather?.[0]?.icon}@2x.png`}
-                alt="weather icon"
-                className="w-20 h-20 mt-1"
-              />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {weatherData.slice(0, 8).map((city) => (
+                <div
+                  key={city.id}
+                  className="bg-white/80 backdrop-blur-md shadow-lg rounded-2xl p-5 flex flex-col items-center justify-center text-center h-56 border border-gray-100 hover:shadow-2xl hover:scale-[1.03] transition-all duration-200"
+                >
+                  <h2 className="text-lg md:text-xl font-semibold text-gray-900">{city.name}</h2>
 
-              <p className="text-gray-600 capitalize -mt-2">
-                {city.weather?.[0]?.description || "N/A"}
-              </p>
+                  <img
+                    src={`https://openweathermap.org/img/wn/${city.weather?.[0]?.icon}@2x.png`}
+                    alt="weather icon"
+                    className="w-20 h-20 mt-1"
+                  />
 
-              <p className="text-blue-700 font-extrabold text-2xl mt-1">
-                {city.main?.temp ?? "N/A"}°C
-              </p>
+                  <p className="text-gray-600 capitalize -mt-2">
+                    {city.weather?.[0]?.description || "N/A"}
+                  </p>
+
+                  <p className="text-blue-700 font-extrabold text-2xl mt-1">
+                    {city.main?.temp ?? "N/A"}°C
+                  </p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </>
+        ) : (
+          <div className="max-w-4xl mx-auto text-center py-12">
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Sign In Required</h3>
+              <p className="text-gray-600 mb-6">
+                Please log in to view weather information.
+              </p>
+              <a
+                href="/auth/login"
+                className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200"
+              >
+                Sign In
+              </a>
+            </div>
+          </div>
+        )}
       </div>
 
       <Footer />
-
     </main>
   );
 }
