@@ -30,7 +30,7 @@ Tech Stack
 App Structure (high level)
 
 - `app/`
-  - `page.tsx`: Landing page
+  - `page.tsx`: Home page
   - `dashboard/page.tsx`: Weather dashboard UI (consumes `/api/weather`)
   - `profile/page.tsx`: Authenticated user profile
   - `api/weather/route.ts`: Weather aggregation + 5-min cache
@@ -60,7 +60,7 @@ npm run dev
 
 Routes
 
-- `/` – Landing page
+- `/` – Home page
 - `/dashboard` – Weather dashboard (reads from `/api/weather`)
 - `/profile` – Authenticated profile page
 - `/api/weather` – Aggregates weather for all city ids from `cities.json`, caches for 5 minutes
