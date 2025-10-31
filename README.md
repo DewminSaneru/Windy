@@ -42,6 +42,23 @@ Environment Variables
 
 Create a `.env.local` with the following:
 
+```
+# OpenWeather
+OPENWEATHER_API_KEY=YOUR_OPENWEATHER_API_KEY
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+
+# Auth0
+AUTH0_DOMAIN=your-tenant.us.auth0.com
+AUTH0_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+AUTH0_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+AUTH0_SECRET=long-random-string
+APP_BASE_URL=http://localhost:3000
+
+# Optional API authorization params
+AUTH0_SCOPE=openid profile email
+AUTH0_AUDIENCE=
+```
+
 Getting Started
 
 1) Install dependencies
