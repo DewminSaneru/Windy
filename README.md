@@ -53,10 +53,6 @@ AUTH0_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxx
 AUTH0_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxx
 AUTH0_SECRET=long-random-string
 APP_BASE_URL=http://localhost:3000
-
-# Optional API authorization params
-AUTH0_SCOPE=openid profile email
-AUTH0_AUDIENCE=
 ```
 
 Getting Started
