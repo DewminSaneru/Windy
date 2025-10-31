@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 interface CityWeather {
   id: number;
@@ -43,7 +44,7 @@ export default function Dashboard() {
     );
 
   return (
-    <main className="min-h-screen bg-linear-to-br from-blue-50 via-white to-blue-100">
+    <main className="min-h-screen bg-linear-to-br from-blue-50 to-blue-200">
       <Navbar />
 
       <div className="container mx-auto mt-10 px-4 pb-12">
@@ -78,6 +79,9 @@ export default function Dashboard() {
           ))}
         </div>
       </div>
+
+      <Footer />
+
     </main>
   );
 }

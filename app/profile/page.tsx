@@ -1,5 +1,6 @@
 'use client';
 
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
@@ -18,7 +19,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <main className="min-h-screen bg-linear-to-br from-blue-50 via-white to-blue-100">
+    <main className="min-h-screen bg-linear-to-br  from-blue-50 to-blue-200">
       <Navbar />
       
       {/* Header Section */}
@@ -114,6 +115,9 @@ export default function ProfilePage() {
           </div>
         )}
       </div>
+      
+      <Footer />
+
     </main>
   );
 }
